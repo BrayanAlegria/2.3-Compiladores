@@ -1,0 +1,59 @@
+body{
+    background-color: peru;
+}
+
+.contenedor-ventanas {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ventana {
+    width: 600px;
+    height: 745px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    padding: 20px;
+    font-size: 9px;
+}
+
+.ventana2 {
+    width: 600px;
+    height: 740px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    padding: 20px;
+    font-size: 9px;
+}
+
+.titulo {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.contenido {
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+}
+
+#cadena_lexico{
+    height: 100px;
+    color: rgb(106, 100, 57);
+    background-color: rgb(152, 248, 238);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#cadena_sintactico{
+    height: 100px;
+    color: rgb(106, 100, 57);
+    background-color: rgb(152, 248, 238);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador Léxico y Sintáctico</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+</head>
+<body>
+    <center>
+        <h1>Analizador Léxico y Sintáctico</h1>
+    </center>
+    <div class="contenedor-ventanas">
+        <!-- Ventana para el análisis léxico -->
+        <div class="ventana">
+            <div class="titulo">Análisis Léxico:</div>
+            <div class="contenido">
+                <center>
+                    <label for="cadena_lexico">Ingrese la cadena:</label>
+                </center>
+                <!-- Cambiar el input por un textarea -->
+                <textarea id="cadena_lexico" name="cadena_lexico" rows="4" cols="50"></textarea>
+                <button onclick="analizarLexico()">Analizar Léxicamente</button>
+                <div id="resultado_lexico">
+                    <!-- Aquí se mostrará el resultado del análisis léxico -->
+                </div>
+            </div>
+        </div>
+        <!-- Ventana para el análisis sintáctico -->
+        <div class="ventana">
+            <div class="titulo">Análisis Sintáctico:</div>
+            <div class="contenido">
+                <center>
+                    <label for="cadena_sintactico">Ingrese la cadena:</label>
+                </center>
+                <!-- Cambiar el input por un textarea -->
+                <textarea id="cadena_sintactico" name="cadena_sintactico" rows="4" cols="50"></textarea>
+                <button onclick="analizarSintactico()">Analizar Sintácticamente</button>
+                <div id="resultado_sintactico">
+                    <!-- Aquí se mostrará el resultado del análisis sintáctico -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function analizarLexico() {
+            var cadena = document.getElementById('cadena_lexico').value;
+            console.log("Cadena a analizar:", cadena); 
+            fetch('/analizar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ cadena: cadena })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Resultados del análisis léxico:", data); 
+                if ('resultado_lexico' in data) {
+                    document.getElementById('resultado_lexico').innerHTML = formatResults(data.resultado_lexico);
+                } else if ('error' in data) {
+                    document.getElementById('resultado_lexico').innerHTML = "<p>Error: " + data.error + "</p>";
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function analizarSintactico() {
+            var cadena = document.getElementById('cadena_sintactico').value;
+            console.log("Cadena a analizar sintácticamente:", cadena); 
+            fetch('/analizar_sintactico', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ cadena: cadena }) 
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Resultados del análisis sintáctico:", data); 
+                if ('resultado_sintactico' in data) {
+                    if (data.resultado_sintactico === "La cadena fue aceptada correctamente.") {
+                        document.getElementById('resultado_sintactico').innerHTML = "<p>Cadena aceptada correctamente.</p>";
+                    } else {
+                        document.getElementById('resultado_sintactico').innerHTML = "<p>Error: " + data.resultado_sintactico + "</p>";
+                    }
+                } else if ('error' in data) {
+                    document.getElementById('resultado_sintactico').innerHTML = "<p>Error: " + data.error + "</p>";
+                } else {
+                    document.getElementById('resultado_sintactico').innerHTML = "<p>Error: Resultado inesperado</p>";
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function formatResults(results) {
+            if (results && 'mensaje' in results) {
+                return "<center><h2>Resultado del análisis:</h2></center><p>" + results.mensaje + "</p>";
+            } else if (Array.isArray(results)) {
+                var formattedResults = "<center><h2>Resultado del análisis:</h2></center><ul>";
+                results.forEach(function(result) {
+                    formattedResults += "<li>" + result + "</li>";
+                });
+                formattedResults += "</ul>";
+                return formattedResults;
+            } 
+        }
+    </script>
+</body>
+</html>

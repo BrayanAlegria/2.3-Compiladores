@@ -1,0 +1,618 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMA
+    DERCORCHET
+    INCREMENT
+    ITERADOR
+    IZQCORCHET
+    NUMERO
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement
+Rule 2     program -> program statement
+Rule 3     statement -> assignment_statement
+Rule 4     statement -> comparison_statement
+Rule 5     statement -> for_loop_statement
+Rule 6     statement -> print_statement
+Rule 7     assignment_statement -> ID IGUAL expression
+Rule 8     assignment_statement -> ID IGUAL INT
+Rule 9     assignment_statement -> ID IGUAL STRING
+Rule 10    comparison_statement -> expression MENORQUE expression
+Rule 11    comparison_statement -> expression IGUAL expression
+Rule 12    for_loop_statement -> FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER
+Rule 13    print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA
+Rule 14    expression -> ID
+Rule 15    expression -> INT
+Rule 16    expression -> STRING
+Rule 17    string_expression -> STRING
+Rule 18    string_expression -> STRING PUNTO INT
+Rule 19    string_expression -> STRING PUNTO ID
+
+Terminals, with rules where they appear
+
+COMA                 : 
+DERCORCHET           : 
+DERPARENT            : 12 13
+FOR                  : 12
+ID                   : 7 8 9 14 19
+IGUAL                : 7 8 9 11
+INCREMENT            : 
+INT                  : 8 15 18
+ITERADOR             : 
+IZQCORCHET           : 
+IZQPARENT            : 12 13
+LLAVEDER             : 12
+LLAVEIZQ             : 12
+MENORQUE             : 10
+NUMERO               : 
+OUT                  : 13
+PRINTLN              : 13
+PUNTO                : 13 13 18 19
+PUNTOCOMA            : 12 12 13
+STRING               : 9 16 17 18 19
+SYSTEM               : 13
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment_statement : 3 12 12
+comparison_statement : 4 12
+expression           : 7 10 10 11 11 13
+for_loop_statement   : 5
+print_statement      : 6 12
+program              : 2 0
+statement            : 1 2
+string_expression    : 
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement
+    (2) program -> . program statement
+    (3) statement -> . assignment_statement
+    (4) statement -> . comparison_statement
+    (5) statement -> . for_loop_statement
+    (6) statement -> . print_statement
+    (7) assignment_statement -> . ID IGUAL expression
+    (8) assignment_statement -> . ID IGUAL INT
+    (9) assignment_statement -> . ID IGUAL STRING
+    (10) comparison_statement -> . expression MENORQUE expression
+    (11) comparison_statement -> . expression IGUAL expression
+    (12) for_loop_statement -> . FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER
+    (13) print_statement -> . SYSTEM PUNTO OUT PUNTO PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA
+    (14) expression -> . ID
+    (15) expression -> . INT
+    (16) expression -> . STRING
+
+    ID              shift and go to state 7
+    FOR             shift and go to state 11
+    SYSTEM          shift and go to state 12
+    INT             shift and go to state 9
+    STRING          shift and go to state 10
+
+    program                        shift and go to state 1
+    statement                      shift and go to state 2
+    assignment_statement           shift and go to state 3
+    comparison_statement           shift and go to state 4
+    for_loop_statement             shift and go to state 5
+    print_statement                shift and go to state 6
+    expression                     shift and go to state 8
+
+state 1
+
+    (0) S' -> program .
+    (2) program -> program . statement
+    (3) statement -> . assignment_statement
+    (4) statement -> . comparison_statement
+    (5) statement -> . for_loop_statement
+    (6) statement -> . print_statement
+    (7) assignment_statement -> . ID IGUAL expression
+    (8) assignment_statement -> . ID IGUAL INT
+    (9) assignment_statement -> . ID IGUAL STRING
+    (10) comparison_statement -> . expression MENORQUE expression
+    (11) comparison_statement -> . expression IGUAL expression
+    (12) for_loop_statement -> . FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER
+    (13) print_statement -> . SYSTEM PUNTO OUT PUNTO PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA
+    (14) expression -> . ID
+    (15) expression -> . INT
+    (16) expression -> . STRING
+
+    ID              shift and go to state 7
+    FOR             shift and go to state 11
+    SYSTEM          shift and go to state 12
+    INT             shift and go to state 9
+    STRING          shift and go to state 10
+
+    statement                      shift and go to state 13
+    assignment_statement           shift and go to state 3
+    comparison_statement           shift and go to state 4
+    for_loop_statement             shift and go to state 5
+    print_statement                shift and go to state 6
+    expression                     shift and go to state 8
+
+state 2
+
+    (1) program -> statement .
+
+    ID              reduce using rule 1 (program -> statement .)
+    FOR             reduce using rule 1 (program -> statement .)
+    SYSTEM          reduce using rule 1 (program -> statement .)
+    INT             reduce using rule 1 (program -> statement .)
+    STRING          reduce using rule 1 (program -> statement .)
+    $end            reduce using rule 1 (program -> statement .)
+
+
+state 3
+
+    (3) statement -> assignment_statement .
+
+    ID              reduce using rule 3 (statement -> assignment_statement .)
+    FOR             reduce using rule 3 (statement -> assignment_statement .)
+    SYSTEM          reduce using rule 3 (statement -> assignment_statement .)
+    INT             reduce using rule 3 (statement -> assignment_statement .)
+    STRING          reduce using rule 3 (statement -> assignment_statement .)
+    $end            reduce using rule 3 (statement -> assignment_statement .)
+
+
+state 4
+
+    (4) statement -> comparison_statement .
+
+    ID              reduce using rule 4 (statement -> comparison_statement .)
+    FOR             reduce using rule 4 (statement -> comparison_statement .)
+    SYSTEM          reduce using rule 4 (statement -> comparison_statement .)
+    INT             reduce using rule 4 (statement -> comparison_statement .)
+    STRING          reduce using rule 4 (statement -> comparison_statement .)
+    $end            reduce using rule 4 (statement -> comparison_statement .)
+
+
+state 5
+
+    (5) statement -> for_loop_statement .
+
+    ID              reduce using rule 5 (statement -> for_loop_statement .)
+    FOR             reduce using rule 5 (statement -> for_loop_statement .)
+    SYSTEM          reduce using rule 5 (statement -> for_loop_statement .)
+    INT             reduce using rule 5 (statement -> for_loop_statement .)
+    STRING          reduce using rule 5 (statement -> for_loop_statement .)
+    $end            reduce using rule 5 (statement -> for_loop_statement .)
+
+
+state 6
+
+    (6) statement -> print_statement .
+
+    ID              reduce using rule 6 (statement -> print_statement .)
+    FOR             reduce using rule 6 (statement -> print_statement .)
+    SYSTEM          reduce using rule 6 (statement -> print_statement .)
+    INT             reduce using rule 6 (statement -> print_statement .)
+    STRING          reduce using rule 6 (statement -> print_statement .)
+    $end            reduce using rule 6 (statement -> print_statement .)
+
+
+state 7
+
+    (7) assignment_statement -> ID . IGUAL expression
+    (8) assignment_statement -> ID . IGUAL INT
+    (9) assignment_statement -> ID . IGUAL STRING
+    (14) expression -> ID .
+
+  ! shift/reduce conflict for IGUAL resolved as shift
+    IGUAL           shift and go to state 14
+    MENORQUE        reduce using rule 14 (expression -> ID .)
+
+  ! IGUAL           [ reduce using rule 14 (expression -> ID .) ]
+
+
+state 8
+
+    (10) comparison_statement -> expression . MENORQUE expression
+    (11) comparison_statement -> expression . IGUAL expression
+
+    MENORQUE        shift and go to state 15
+    IGUAL           shift and go to state 16
+
+
+state 9
+
+    (15) expression -> INT .
+
+    MENORQUE        reduce using rule 15 (expression -> INT .)
+    IGUAL           reduce using rule 15 (expression -> INT .)
+    ID              reduce using rule 15 (expression -> INT .)
+    FOR             reduce using rule 15 (expression -> INT .)
+    SYSTEM          reduce using rule 15 (expression -> INT .)
+    INT             reduce using rule 15 (expression -> INT .)
+    STRING          reduce using rule 15 (expression -> INT .)
+    $end            reduce using rule 15 (expression -> INT .)
+    PUNTOCOMA       reduce using rule 15 (expression -> INT .)
+    DERPARENT       reduce using rule 15 (expression -> INT .)
+
+
+state 10
+
+    (16) expression -> STRING .
+
+    MENORQUE        reduce using rule 16 (expression -> STRING .)
+    IGUAL           reduce using rule 16 (expression -> STRING .)
+    ID              reduce using rule 16 (expression -> STRING .)
+    FOR             reduce using rule 16 (expression -> STRING .)
+    SYSTEM          reduce using rule 16 (expression -> STRING .)
+    INT             reduce using rule 16 (expression -> STRING .)
+    STRING          reduce using rule 16 (expression -> STRING .)
+    $end            reduce using rule 16 (expression -> STRING .)
+    PUNTOCOMA       reduce using rule 16 (expression -> STRING .)
+    DERPARENT       reduce using rule 16 (expression -> STRING .)
+
+
+state 11
+
+    (12) for_loop_statement -> FOR . IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER
+
+    IZQPARENT       shift and go to state 17
+
+
+state 12
+
+    (13) print_statement -> SYSTEM . PUNTO OUT PUNTO PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA
+
+    PUNTO           shift and go to state 18
+
+
+state 13
+
+    (2) program -> program statement .
+
+    ID              reduce using rule 2 (program -> program statement .)
+    FOR             reduce using rule 2 (program -> program statement .)
+    SYSTEM          reduce using rule 2 (program -> program statement .)
+    INT             reduce using rule 2 (program -> program statement .)
+    STRING          reduce using rule 2 (program -> program statement .)
+    $end            reduce using rule 2 (program -> program statement .)
+
+
+state 14
+
+    (7) assignment_statement -> ID IGUAL . expression
+    (8) assignment_statement -> ID IGUAL . INT
+    (9) assignment_statement -> ID IGUAL . STRING
+    (14) expression -> . ID
+    (15) expression -> . INT
+    (16) expression -> . STRING
+
+    INT             shift and go to state 21
+    STRING          shift and go to state 22
+    ID              shift and go to state 19
+
+    expression                     shift and go to state 20
+
+state 15
+
+    (10) comparison_statement -> expression MENORQUE . expression
+    (14) expression -> . ID
+    (15) expression -> . INT
+    (16) expression -> . STRING
+
+    ID              shift and go to state 19
+    INT             shift and go to state 9
+    STRING          shift and go to state 10
+
+    expression                     shift and go to state 23
+
+state 16
+
+    (11) comparison_statement -> expression IGUAL . expression
+    (14) expression -> . ID
+    (15) expression -> . INT
+    (16) expression -> . STRING
+
+    ID              shift and go to state 19
+    INT             shift and go to state 9
+    STRING          shift and go to state 10
+
+    expression                     shift and go to state 24
+
+state 17
+
+    (12) for_loop_statement -> FOR IZQPARENT . assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER
+    (7) assignment_statement -> . ID IGUAL expression
+    (8) assignment_statement -> . ID IGUAL INT
+    (9) assignment_statement -> . ID IGUAL STRING
+
+    ID              shift and go to state 26
+
+    assignment_statement           shift and go to state 25
+
+state 18
+
+    (13) print_statement -> SYSTEM PUNTO . OUT PUNTO PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA
+
+    OUT             shift and go to state 27
+
+
+state 19
+
+    (14) expression -> ID .
+
+    ID              reduce using rule 14 (expression -> ID .)
+    FOR             reduce using rule 14 (expression -> ID .)
+    SYSTEM          reduce using rule 14 (expression -> ID .)
+    INT             reduce using rule 14 (expression -> ID .)
+    STRING          reduce using rule 14 (expression -> ID .)
+    $end            reduce using rule 14 (expression -> ID .)
+    PUNTOCOMA       reduce using rule 14 (expression -> ID .)
+    DERPARENT       reduce using rule 14 (expression -> ID .)
+    MENORQUE        reduce using rule 14 (expression -> ID .)
+    IGUAL           reduce using rule 14 (expression -> ID .)
+
+
+state 20
+
+    (7) assignment_statement -> ID IGUAL expression .
+
+    ID              reduce using rule 7 (assignment_statement -> ID IGUAL expression .)
+    FOR             reduce using rule 7 (assignment_statement -> ID IGUAL expression .)
+    SYSTEM          reduce using rule 7 (assignment_statement -> ID IGUAL expression .)
+    INT             reduce using rule 7 (assignment_statement -> ID IGUAL expression .)
+    STRING          reduce using rule 7 (assignment_statement -> ID IGUAL expression .)
+    $end            reduce using rule 7 (assignment_statement -> ID IGUAL expression .)
+    PUNTOCOMA       reduce using rule 7 (assignment_statement -> ID IGUAL expression .)
+    DERPARENT       reduce using rule 7 (assignment_statement -> ID IGUAL expression .)
+
+
+state 21
+
+    (8) assignment_statement -> ID IGUAL INT .
+    (15) expression -> INT .
+
+  ! reduce/reduce conflict for ID resolved using rule 8 (assignment_statement -> ID IGUAL INT .)
+  ! reduce/reduce conflict for FOR resolved using rule 8 (assignment_statement -> ID IGUAL INT .)
+  ! reduce/reduce conflict for SYSTEM resolved using rule 8 (assignment_statement -> ID IGUAL INT .)
+  ! reduce/reduce conflict for INT resolved using rule 8 (assignment_statement -> ID IGUAL INT .)
+  ! reduce/reduce conflict for STRING resolved using rule 8 (assignment_statement -> ID IGUAL INT .)
+  ! reduce/reduce conflict for $end resolved using rule 8 (assignment_statement -> ID IGUAL INT .)
+  ! reduce/reduce conflict for PUNTOCOMA resolved using rule 8 (assignment_statement -> ID IGUAL INT .)
+  ! reduce/reduce conflict for DERPARENT resolved using rule 8 (assignment_statement -> ID IGUAL INT .)
+    ID              reduce using rule 8 (assignment_statement -> ID IGUAL INT .)
+    FOR             reduce using rule 8 (assignment_statement -> ID IGUAL INT .)
+    SYSTEM          reduce using rule 8 (assignment_statement -> ID IGUAL INT .)
+    INT             reduce using rule 8 (assignment_statement -> ID IGUAL INT .)
+    STRING          reduce using rule 8 (assignment_statement -> ID IGUAL INT .)
+    $end            reduce using rule 8 (assignment_statement -> ID IGUAL INT .)
+    PUNTOCOMA       reduce using rule 8 (assignment_statement -> ID IGUAL INT .)
+    DERPARENT       reduce using rule 8 (assignment_statement -> ID IGUAL INT .)
+
+  ! ID              [ reduce using rule 15 (expression -> INT .) ]
+  ! FOR             [ reduce using rule 15 (expression -> INT .) ]
+  ! SYSTEM          [ reduce using rule 15 (expression -> INT .) ]
+  ! INT             [ reduce using rule 15 (expression -> INT .) ]
+  ! STRING          [ reduce using rule 15 (expression -> INT .) ]
+  ! $end            [ reduce using rule 15 (expression -> INT .) ]
+  ! PUNTOCOMA       [ reduce using rule 15 (expression -> INT .) ]
+  ! DERPARENT       [ reduce using rule 15 (expression -> INT .) ]
+
+
+state 22
+
+    (9) assignment_statement -> ID IGUAL STRING .
+    (16) expression -> STRING .
+
+  ! reduce/reduce conflict for ID resolved using rule 9 (assignment_statement -> ID IGUAL STRING .)
+  ! reduce/reduce conflict for FOR resolved using rule 9 (assignment_statement -> ID IGUAL STRING .)
+  ! reduce/reduce conflict for SYSTEM resolved using rule 9 (assignment_statement -> ID IGUAL STRING .)
+  ! reduce/reduce conflict for INT resolved using rule 9 (assignment_statement -> ID IGUAL STRING .)
+  ! reduce/reduce conflict for STRING resolved using rule 9 (assignment_statement -> ID IGUAL STRING .)
+  ! reduce/reduce conflict for $end resolved using rule 9 (assignment_statement -> ID IGUAL STRING .)
+  ! reduce/reduce conflict for PUNTOCOMA resolved using rule 9 (assignment_statement -> ID IGUAL STRING .)
+  ! reduce/reduce conflict for DERPARENT resolved using rule 9 (assignment_statement -> ID IGUAL STRING .)
+    ID              reduce using rule 9 (assignment_statement -> ID IGUAL STRING .)
+    FOR             reduce using rule 9 (assignment_statement -> ID IGUAL STRING .)
+    SYSTEM          reduce using rule 9 (assignment_statement -> ID IGUAL STRING .)
+    INT             reduce using rule 9 (assignment_statement -> ID IGUAL STRING .)
+    STRING          reduce using rule 9 (assignment_statement -> ID IGUAL STRING .)
+    $end            reduce using rule 9 (assignment_statement -> ID IGUAL STRING .)
+    PUNTOCOMA       reduce using rule 9 (assignment_statement -> ID IGUAL STRING .)
+    DERPARENT       reduce using rule 9 (assignment_statement -> ID IGUAL STRING .)
+
+  ! ID              [ reduce using rule 16 (expression -> STRING .) ]
+  ! FOR             [ reduce using rule 16 (expression -> STRING .) ]
+  ! SYSTEM          [ reduce using rule 16 (expression -> STRING .) ]
+  ! INT             [ reduce using rule 16 (expression -> STRING .) ]
+  ! STRING          [ reduce using rule 16 (expression -> STRING .) ]
+  ! $end            [ reduce using rule 16 (expression -> STRING .) ]
+  ! PUNTOCOMA       [ reduce using rule 16 (expression -> STRING .) ]
+  ! DERPARENT       [ reduce using rule 16 (expression -> STRING .) ]
+
+
+state 23
+
+    (10) comparison_statement -> expression MENORQUE expression .
+
+    ID              reduce using rule 10 (comparison_statement -> expression MENORQUE expression .)
+    FOR             reduce using rule 10 (comparison_statement -> expression MENORQUE expression .)
+    SYSTEM          reduce using rule 10 (comparison_statement -> expression MENORQUE expression .)
+    INT             reduce using rule 10 (comparison_statement -> expression MENORQUE expression .)
+    STRING          reduce using rule 10 (comparison_statement -> expression MENORQUE expression .)
+    $end            reduce using rule 10 (comparison_statement -> expression MENORQUE expression .)
+    PUNTOCOMA       reduce using rule 10 (comparison_statement -> expression MENORQUE expression .)
+
+
+state 24
+
+    (11) comparison_statement -> expression IGUAL expression .
+
+    ID              reduce using rule 11 (comparison_statement -> expression IGUAL expression .)
+    FOR             reduce using rule 11 (comparison_statement -> expression IGUAL expression .)
+    SYSTEM          reduce using rule 11 (comparison_statement -> expression IGUAL expression .)
+    INT             reduce using rule 11 (comparison_statement -> expression IGUAL expression .)
+    STRING          reduce using rule 11 (comparison_statement -> expression IGUAL expression .)
+    $end            reduce using rule 11 (comparison_statement -> expression IGUAL expression .)
+    PUNTOCOMA       reduce using rule 11 (comparison_statement -> expression IGUAL expression .)
+
+
+state 25
+
+    (12) for_loop_statement -> FOR IZQPARENT assignment_statement . PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER
+
+    PUNTOCOMA       shift and go to state 28
+
+
+state 26
+
+    (7) assignment_statement -> ID . IGUAL expression
+    (8) assignment_statement -> ID . IGUAL INT
+    (9) assignment_statement -> ID . IGUAL STRING
+
+    IGUAL           shift and go to state 14
+
+
+state 27
+
+    (13) print_statement -> SYSTEM PUNTO OUT . PUNTO PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA
+
+    PUNTO           shift and go to state 29
+
+
+state 28
+
+    (12) for_loop_statement -> FOR IZQPARENT assignment_statement PUNTOCOMA . comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER
+    (10) comparison_statement -> . expression MENORQUE expression
+    (11) comparison_statement -> . expression IGUAL expression
+    (14) expression -> . ID
+    (15) expression -> . INT
+    (16) expression -> . STRING
+
+    ID              shift and go to state 19
+    INT             shift and go to state 9
+    STRING          shift and go to state 10
+
+    comparison_statement           shift and go to state 30
+    expression                     shift and go to state 8
+
+state 29
+
+    (13) print_statement -> SYSTEM PUNTO OUT PUNTO . PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA
+
+    PRINTLN         shift and go to state 31
+
+
+state 30
+
+    (12) for_loop_statement -> FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement . PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER
+
+    PUNTOCOMA       shift and go to state 32
+
+
+state 31
+
+    (13) print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN . IZQPARENT expression DERPARENT PUNTOCOMA
+
+    IZQPARENT       shift and go to state 33
+
+
+state 32
+
+    (12) for_loop_statement -> FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA . assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER
+    (7) assignment_statement -> . ID IGUAL expression
+    (8) assignment_statement -> . ID IGUAL INT
+    (9) assignment_statement -> . ID IGUAL STRING
+
+    ID              shift and go to state 26
+
+    assignment_statement           shift and go to state 34
+
+state 33
+
+    (13) print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN IZQPARENT . expression DERPARENT PUNTOCOMA
+    (14) expression -> . ID
+    (15) expression -> . INT
+    (16) expression -> . STRING
+
+    ID              shift and go to state 19
+    INT             shift and go to state 9
+    STRING          shift and go to state 10
+
+    expression                     shift and go to state 35
+
+state 34
+
+    (12) for_loop_statement -> FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement . DERPARENT LLAVEIZQ print_statement LLAVEDER
+
+    DERPARENT       shift and go to state 36
+
+
+state 35
+
+    (13) print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN IZQPARENT expression . DERPARENT PUNTOCOMA
+
+    DERPARENT       shift and go to state 37
+
+
+state 36
+
+    (12) for_loop_statement -> FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT . LLAVEIZQ print_statement LLAVEDER
+
+    LLAVEIZQ        shift and go to state 38
+
+
+state 37
+
+    (13) print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN IZQPARENT expression DERPARENT . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 39
+
+
+state 38
+
+    (12) for_loop_statement -> FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ . print_statement LLAVEDER
+    (13) print_statement -> . SYSTEM PUNTO OUT PUNTO PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA
+
+    SYSTEM          shift and go to state 12
+
+    print_statement                shift and go to state 40
+
+state 39
+
+    (13) print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA .
+
+    ID              reduce using rule 13 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA .)
+    FOR             reduce using rule 13 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA .)
+    SYSTEM          reduce using rule 13 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA .)
+    INT             reduce using rule 13 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA .)
+    STRING          reduce using rule 13 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA .)
+    $end            reduce using rule 13 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA .)
+    LLAVEDER        reduce using rule 13 (print_statement -> SYSTEM PUNTO OUT PUNTO PRINTLN IZQPARENT expression DERPARENT PUNTOCOMA .)
+
+
+state 40
+
+    (12) for_loop_statement -> FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement . LLAVEDER
+
+    LLAVEDER        shift and go to state 41
+
+
+state 41
+
+    (12) for_loop_statement -> FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER .
+
+    ID              reduce using rule 12 (for_loop_statement -> FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER .)
+    FOR             reduce using rule 12 (for_loop_statement -> FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER .)
+    SYSTEM          reduce using rule 12 (for_loop_statement -> FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER .)
+    INT             reduce using rule 12 (for_loop_statement -> FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER .)
+    STRING          reduce using rule 12 (for_loop_statement -> FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER .)
+    $end            reduce using rule 12 (for_loop_statement -> FOR IZQPARENT assignment_statement PUNTOCOMA comparison_statement PUNTOCOMA assignment_statement DERPARENT LLAVEIZQ print_statement LLAVEDER .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for IGUAL in state 7 resolved as shift
+WARNING: reduce/reduce conflict in state 21 resolved using rule (assignment_statement -> ID IGUAL INT)
+WARNING: rejected rule (expression -> INT) in state 21
+WARNING: reduce/reduce conflict in state 22 resolved using rule (assignment_statement -> ID IGUAL STRING)
+WARNING: rejected rule (expression -> STRING) in state 22
